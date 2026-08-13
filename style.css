@@ -1,0 +1,380 @@
+/* Palette: muted paper and ink, with a faded rust accent — the register of a */
+/* printed market letter rather than a terminal screen. */
+:root {
+  --font-body: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --font-heading: ui-sans-serif, -apple-system, "Helvetica Neue", sans-serif;
+  --color-bg: #fbfaf8;
+  --color-text: #1c1b19;
+  --color-muted: #6b6862;
+  --color-accent: #7a3b2e;
+  --color-border: #e0ddd6;
+  --color-card-bg: #f4f1ea;
+  --measure: 40rem;
+  --radius: 0.5rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #16151a;
+    --color-text: #e6e3dd;
+    --color-muted: #9a958c;
+    --color-accent: #d99478;
+    --color-border: #2e2c33;
+    --color-card-bg: #1d1c22;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 2.5rem 1.25rem;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 1.125rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Each of these is centered on its own, on purpose — editing one won't */
+/* accidentally change the others. */
+
+header {
+  max-width: var(--measure);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+main {
+  max-width: var(--measure);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+article {
+  max-width: var(--measure);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+footer {
+  max-width: var(--measure);
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 3rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-border);
+  color: var(--color-muted);
+  font-size: 0.9rem;
+}
+
+nav {
+  max-width: var(--measure);
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1.25rem 0;
+  margin-bottom: 2.5rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+nav a {
+  display: inline-block;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+nav a:hover {
+  color: var(--color-accent);
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-heading);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+a {
+  color: var(--color-accent);
+}
+
+time {
+  color: var(--color-muted);
+  font-size: 0.9rem;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid var(--color-border);
+  margin: 2rem 0;
+}
+
+blockquote {
+  margin: 1.5rem 0;
+  padding-left: 1rem;
+  border-left: 3px solid var(--color-border);
+  color: var(--color-muted);
+  font-style: italic;
+}
+
+/* Index article list: title, date, summary. Kept plainer than the radar card */
+/* so the two read as different kinds of thing. */
+
+#articles article {
+  padding: 1.25rem 0;
+  border-top: 1px solid var(--color-border);
+}
+
+#articles article:first-of-type {
+  border-top: none;
+}
+
+#articles h3 {
+  margin: 0 0 0.2rem 0;
+  font-size: 1.2rem;
+}
+
+#articles h3 a {
+  text-decoration: none;
+}
+
+#articles h3 a:hover {
+  text-decoration: underline;
+}
+
+#articles p {
+  margin: 0.4rem 0 0 0;
+  color: var(--color-muted);
+  font-size: 1rem;
+}
+
+/* Figures: the two or three numbers an article turns on, pulled out of the */
+/* prose so they can be read without reading the piece. */
+
+.figures {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin: 1.75rem 0;
+  padding: 1.1rem 1.25rem;
+  background: var(--color-card-bg);
+  border-radius: var(--radius);
+}
+
+.figures > div {
+  flex: 1 1 8rem;
+}
+
+.figures dt {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  letter-spacing: -0.02em;
+}
+
+.figures dd {
+  display: block;
+  margin: 0.2rem 0 0 0;
+  font-family: var(--font-heading);
+  font-size: 0.78rem;
+  line-height: 1.35;
+  color: var(--color-muted);
+}
+
+/* Caveat: a limitation the piece can't resolve, marked as such rather than */
+/* buried in a paragraph. */
+
+.caveat {
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--color-muted);
+  background: var(--color-card-bg);
+  border-radius: var(--radius);
+  padding: 1rem 1.15rem;
+  margin: 1.75rem 0;
+}
+
+/* Erratum: a published article is permanent, so a correction is appended and */
+/* visibly outlined rather than edited into the text above it. */
+
+.erratum {
+  font-family: var(--font-heading);
+  font-size: 0.92rem;
+  line-height: 1.6;
+  border: 1px solid var(--color-accent);
+  border-radius: var(--radius);
+  padding: 1.1rem 1.25rem;
+  margin: 2.5rem 0 0 0;
+}
+
+.erratum h2 {
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin: 0 0 0.6rem 0;
+}
+
+.erratum p:last-child {
+  margin-bottom: 0;
+}
+
+table {
+  border-collapse: collapse;
+  margin: 1.25rem 0;
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 0.4rem 1.5rem 0.4rem 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+th {
+  color: var(--color-muted);
+  font-size: 0.76rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Sources: every article ends with one. Set quieter than the body so it reads */
+/* as apparatus, not argument. */
+
+#sources {
+  margin-top: 2.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-border);
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: var(--color-muted);
+}
+
+#sources h2 {
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin: 0 0 0.6rem 0;
+}
+
+#sources ul {
+  margin: 0;
+  padding-left: 1.1rem;
+}
+
+#sources li {
+  margin-bottom: 0.35rem;
+}
+
+/* Radar: a visually distinct card, deliberately different from the plain */
+/* article list below it — a tinted background, rounded corners, its own */
+/* internal spacing between entries. */
+
+.radar {
+  background: var(--color-card-bg);
+  border-radius: var(--radius);
+  padding: 1.5rem 1.75rem;
+  margin: 2rem 0;
+}
+
+.radar h2 {
+  margin-top: 0;
+}
+
+.radar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.radar li {
+  padding: 0.75rem 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.radar li:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+
+.radar li:last-child {
+  padding-bottom: 0;
+}
+
+.radar h3 {
+  margin: 0 0 0.25rem 0;
+  font-size: 1rem;
+}
+
+.radar p {
+  margin: 0;
+  color: var(--color-muted);
+}
+
+/* Print: readable on paper by default, no separate effort required. */
+
+@media print {
+  body {
+    background: white;
+    color: black;
+    font-size: 12pt;
+    padding: 0;
+  }
+
+  nav {
+    display: none;
+  }
+
+  a {
+    color: black;
+    text-decoration: underline;
+  }
+
+  .radar {
+    background: none;
+    border: 1px solid black;
+  }
+
+  .figures,
+  .caveat {
+    background: none;
+    border: 1px solid black;
+  }
+
+  #sources a::after {
+    content: " (" attr(href) ")";
+    font-size: 0.85em;
+    color: black;
+  }
+
+  h1,
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+
+  article,
+  blockquote,
+  li {
+    page-break-inside: avoid;
+  }
+
+  footer {
+    border-top: 1px solid black;
+    color: black;
+  }
+}
